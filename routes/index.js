@@ -5,6 +5,7 @@ const express = require('express')
 const router = express.Router()
 
 // this is for the root of the webpage
+// get request. HTTP Request Response
 router.get('/', (req, res) => {
     res.render('index')
 })
