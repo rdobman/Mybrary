@@ -4,7 +4,7 @@ This is the controller for all the routes of the application.
 const express = require('express')
 const author = require('../models/author')
 const router = express.Router()
-const Author = require('../models/author')
+const Author = require('../models/author') 
 
 // All Authors Route
 router.get('/', async (req, res) => {
@@ -29,7 +29,7 @@ router.get('/new', (req, res) => {
     res.render('authors/new', { author: new author() })
 })
 
-// Create Author route
+// Create Author route: Post for creation
 router.post('/', async (req, res) => {
     const author = new Author({
         name: req.body.name
@@ -47,7 +47,6 @@ router.post('/', async (req, res) => {
     
     }        
 })
-
 
 // export the router that we set up
 module.exports = router

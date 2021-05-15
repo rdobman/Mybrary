@@ -11,8 +11,10 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 
+// Import routers into the server so the server know the routes exist
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
+const bookRouter = require('./routes/books')
 
 // i have no idea. need to research express
 app.set('view engine', 'ejs')
@@ -32,8 +34,10 @@ const db= mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
+// use the routes we created using the necessary path
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
+app.use('/books', bookRouter)
 
 const PORT = process.env.PORT || 3000;
 
